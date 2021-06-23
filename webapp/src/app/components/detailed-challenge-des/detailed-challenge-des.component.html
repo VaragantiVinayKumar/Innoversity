@@ -1,0 +1,37 @@
+<app-header [isLoggedIn]="true"></app-header>
+<div class="container">
+    <div class="wrapper">
+        <div class="title">
+            <h1> {{challenge?.challengeTitle|uppercase}}</h1>
+        </div>
+        <div class="row" style="border: solid;border-radius: 3%;">
+            <div class="col-md-3">
+                <!-- <img src="assets/images/logo4.jpg" alt=""> -->
+                <img src="data:image/png;base64,{{ challenge?.qrCode }}" class="card-img-top" alt="QRCode">
+            </div>
+            <div class="col-md-9 mt-3">
+                <div  style="margin-top: 8pt; "> <strong>Challenger Name : </strong><span> {{challenge?.challengerName}}</span></div>
+        <div style="margin-top: 8pt;"><strong >Challenge Domain : </strong></div>
+        <mat-chip-list>
+            <div *ngFor="let a of challenge.challengeDomain" matTooltip="Domains">
+                <mat-chip>{{a}}</mat-chip>
+            </div>
+        </mat-chip-list>
+        <div style="margin-top: 8pt"><strong>Challenge Reward Prize : </strong><span>{{challenge?.rewardPrize|currency:'USD'}}</span></div>    
+        <div style="margin-top: 8pt"><strong>Challenge Expiry Date : </strong><span>{{challenge?.expiryDate|date}}</span></div>
+        </div>
+
+        </div>
+        <div style="margin-top: 8pt;margin-bottom: 8pt;"><strong>Challenge Abstract : </strong><h2> {{challenge?.challengeAbstract}}</h2></div>
+        <div style="margin-top: 8pt"><strong>Challenge Description : </strong><h2>{{challenge?.description}}</h2></div>
+        <div style="margin-top: 8pt"><strong>Challenge Rules : </strong><h2>{{challenge?.rules}}</h2></div>
+        
+        <!-- <div style="margin-top: 8pt"><strong>Challenge RewardPrize : </strong><span>{{challenge?.rewardPrize|currency:'INR'}}</span></div> -->
+        <div *ngIf="fileName" style="margin-top: 8pt">
+            <strong>Uploaded file: {{fileName}}</strong>
+            <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="openFile()">open</button></span>
+            <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="downloadDocument()">Download Document</button></span>
+          </div>
+          <div style="margin-top: 10pt;text-align: center;"><button class="btn btn-dark mb-3" (click)="solution()">Attempt</button></div>
+    </div>
+</div>

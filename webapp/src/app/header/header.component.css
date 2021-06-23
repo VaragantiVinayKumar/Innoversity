@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Goblin+One&family=Rubik:ital,wght@0,300;0,500;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+#login{
+    position: absolute;
+    right: 10pt;
+}
+.navbar-brand{
+    font-family: 'Goblin One', cursive;
+    align-items: center;
+}
+
+.nav-item {
+    padding-right: 2%;
+    align-items: center;
+}
+a{
+    font-family: Lora;
+    font-size: 13pt;
+}
+#nav:hover{
+    font-size: 16pt;
+}
+#username{
+    /* display: grid; */
+}

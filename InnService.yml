@@ -1,0 +1,97 @@
+version: "2"
+
+services:
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8761:8761
+
+  api-gateway:
+    build: spring-cloud-gateway/
+    container_name: api-gateway
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8080:8080
+
+  registration-service:
+    build: registration-service/
+    container_name: register-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8085:8085
+
+  authentication-service:
+    build: authentication-service/
+    container_name: authentication-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8090:8090
+
+  challenge:
+    build: challenge/
+    container_name: challenge
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8095:8095
+
+  solution-service:
+    build: solution-service/
+    container_name: solution-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8900:8900
+
+  recommendation-service:
+    build: recommendation-service/
+    container_name: recommendation-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8905:8905
+
+  search-service:
+    build: search-service/
+    container_name: search-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8087:8087
+
+  webapp:
+    build: ./webapp/
+    container_name: webapp
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200

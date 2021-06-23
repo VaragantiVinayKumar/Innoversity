@@ -1,0 +1,116 @@
+<app-header [isLoggedIn]="false"></app-header>
+
+<div class="main-container d-flex flex-wrap p-5">
+  <div class="main">
+    <div class="side">
+      <h1 style="font-family: Lora;">Hello !</h1>
+      <h1 class="sign-up-heading">
+        Welcome to Innoversity.
+      </h1>
+      <!-- <img [src]="url" width="30%" alt=""> -->
+      <img [src]="imgURL" class="img-thumbnail col-lg-4 col-md-4 col-sm-10 col-10" *ngIf="imgURL"/>
+      <form [formGroup]="registerForm">
+        <div class="mt-2">
+          <!-- <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control"> -->
+          <input
+          type="file"
+          accept="image/*"
+          class="input-image text-center"
+          (change)="onFileChanged($event)"
+          accept=" image/jpeg, image/png"
+          style="cursor: pointer"
+        />
+        </div>
+      </form>
+
+      <!-- <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+                Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
+                reiciendis, voluptatem quos voluptatibus sunt dolores.</p> -->
+    </div>
+
+    <div class="register-in">
+      <!-- <img [src]="url" width="30%" alt=""> -->
+      <form class="register-in-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mt-2">
+          <input type="text" formControlName="username" class="form-control" placeholder="Name">
+          <div class="text-danger" *ngIf="username?.dirty && username?.invalid">
+            Valid First Name is required
+          </div>
+        </div>
+        <div class="mt-4">
+          <input type="text" formControlName="email" class="form-control" placeholder="Email">
+          <div class="text-danger" *ngIf="email?.dirty && email?.invalid">
+            Valid Email is required
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="passicon">
+          <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Password">
+             <i class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !showPassword,
+                    'fa-eye': showPassword
+                  }"
+                  (click)="togglePassword()"></i>
+                  </div>
+          <div class="text-danger" *ngIf="password?.dirty && password?.invalid">
+            Password is required
+          </div>
+        </div>
+        <div class="mt-4">
+          <input type="text" formControlName="city" class="form-control" placeholder="City">
+          <div class="text-danger" *ngIf="city?.dirty && city?.invalid">
+            City Name is required
+          </div>
+        </div>
+        <div class="mt-4">
+          <ng-multiselect-dropdown formControlName="domain" class="form-control" [placeholder]="'Interested Domain'"
+            [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+          <div class="text-danger" *ngIf="domain?.touched && domain?.invalid">
+            Domain is required
+          </div>
+        </div>
+        <!-- <div class="mt-2">
+                    <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+                    <div class="text-danger" *ngIf="picture?.invalid">
+                        Profile pic is required
+                    </div>
+                </div> -->
+
+
+        <div class="row  mb-2 mt-2">
+          <label for="gender" class="col-md-2 col-form-label pt-0">Gender</label>
+          <div class="col-md-8">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" value="male" formControlName="gender" />
+                Male
+              </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" value="female" formControlName="gender" />
+                Female
+              </label>
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="gender?.touched && gender?.invalid">
+            Gender is required
+          </div>
+        </div>
+        <button class="btnRegister">Register</button>
+        <div [ngStyle]="mystyle" class="text-danger">{{msg}}</div>
+      </form>
+      <!-- <p class="forgot-link">
+        Already registered?<a routerLink="/login"> Login Here</a>
+      </p>
+      <p class="forgot-link">
+        Have you visited our<a routerLink="/"> Landing Page</a>
+      </p> -->
+    </div>
+  </div>
+  <mat-progress-bar  mode="indeterminate" *ngIf="showbar"></mat-progress-bar>        
+</div>

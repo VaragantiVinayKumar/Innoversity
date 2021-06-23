@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  recommendation-service:
+    build: recommendation-service/
+    container_name: recommendation-service1
+    depends_on:
+      - neo4j
+    restart: always
+    hostname: localhost
+    ports:
+      - 8905:8905
+  neo4j:
+    image: neo4j
+    container_name: "neo4j-user"
+    hostname: localhost
+    environment:
+      NEO4J_AUTH: neo4j/admin
+    ports:
+      - 7474:7474
+      - 7687:7687
+    restart: always
+
+
+

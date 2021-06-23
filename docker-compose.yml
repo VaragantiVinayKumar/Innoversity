@@ -1,0 +1,20 @@
+version: "2"
+services:
+  solution-service:
+    build: solution-service/
+    container_name: solution-service
+    depends_on:
+      - mongo
+    restart: always
+#    network_mode: host
+    hostname: localhost
+    ports:
+      - 8900:8900
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    hostname: localhost
+    ports:
+      - "27017:27017"
+    volumes:
+      - /db/mongo:/data/db

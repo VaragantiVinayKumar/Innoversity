@@ -1,0 +1,19 @@
+<div>
+    <div mat-dialog-title class="dialog-title">
+      <div class=".mat-display-1 padding">Try saying something</div>
+    </div>
+    <div mat-dialog-content>
+      <div *ngIf="service.text; else elseblock">
+          <p class="mat-headline">{{service.text}}</p>
+      </div>
+      <ng-template #elseblock>
+          <p class="mat-headline">Listening....</p>
+      </ng-template>
+    </div>
+    <div fxLayoutAlign="end"  mat-dialog-actions>
+      <!-- <button mat-button (click)="startService()">Start</button> -->
+      <button  mat-raised-button color="primary" (click)="stopService()" matTooltip="Stop listening and search">Stop</button>
+      <button  mat-raised-button color="warn" (click)="clearText()" matTooltip="Clear search">Clear</button>
+      <button  mat-raised-button  (click)="cancel()" matTooltip="Cancel search">Cancel</button>
+    </div>
+  </div>

@@ -1,0 +1,9 @@
+version: '2'
+services:
+  search-service:
+    build: search-service/
+    container_name: search-container
+    restart: always
+    hostname: localhost
+    ports:
+      - 8087:8087

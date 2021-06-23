@@ -1,0 +1,24 @@
+.card-body{
+    /* background-color: black; */
+    color: white;
+}
+
+.card:hover{
+    color: rgb(0, 0, 0);
+    background: rgb(231, 231, 201);
+}
+h1{
+    font-family: Lora;
+    /* text-shadow: 0 0 3px black; */
+    background: rgb(224, 224, 209);
+}
+.row{
+    font-family: Lora;
+}
+strong{
+    font-family: Lora;
+}
+div{
+    font-family: Lora;
+}
+

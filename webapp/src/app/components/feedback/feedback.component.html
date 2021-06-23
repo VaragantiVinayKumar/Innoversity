@@ -1,0 +1,150 @@
+
+    <!-- <app-header [isLoggedIn]="true"></app-header>
+    <div class="container1">
+        <div class="solDetails">
+            <p class="card-text"><strong>Challenge Title: </strong>{{info1.challengeTitle}}</p>
+            <p class="card-text"><strong>Solution Title: </strong>{{info1.solution}}</p>
+            <p class="card-text"><strong>Solution Description: </strong>{{info1.description}}</p>
+            <p class="card-text"><strong>Solved By: </strong>{{info1.solvedBy}}</p>
+            <p class="card-text"><strong>Solution is: </strong>{{info1.solStatus}}</p>
+            
+            <div *ngIf="fileName">
+                <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
+                <button matTooltip="Open document in new window" (click)="openFile()" class="btn btn-dark btn-sm" >open</button>
+                <button matTooltip="Download document" [disabled]="downloadDisabled" (click)="downloadDocument()" class="btn btn-dark btn-sm" style=" margin-left: 8%;">Download</button>
+            </div>
+            <div>
+
+            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()" style=" margin-top: 3%;">Update Solution</button></a>
+            <div *ngIf="hired.hired>=3">You have Hired maximum number of innoVators</div>
+            <a ><button matTooltip="Hire an innovator to download document" [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" [disabled]="hired.hired>=3" class="btn btn-light" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="wrapper">
+            <div class="title">
+              <h1>FeedBack</h1>   
+            </div>
+    <div class="row" >
+          
+            <div class="card-body">
+              
+
+              <div *ngFor="let feedBack of feedBackList">
+                <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
+              </div>
+              <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
+                       
+        <div class="mt-2">
+           
+            <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
+            "></textarea>
+            <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
+            Please Enter Details
+        </div>
+        </div>
+   
+        <div class="mt-2">
+           
+            <button class="btn btn-success">Post Comment </button>
+            <p class="valid">{{isEdit}}</p>
+        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+      </div>
+    </div>
+</div>
+<script>
+  function setbg(color)
+{
+document.getElementById("styled").style.background=color
+}
+    </script> -->
+    <app-header [isLoggedIn]="true"></app-header>
+    <button (click)="goBack()" class="btn mt-1"
+    style="margin-left: 7px;background-color: rgb(34, 24, 28); color: white;font-family: Lora;">Back</button>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title">
+                <h1> {{info1.challengeTitle|uppercase}}</h1>
+            </div>
+            <div class="row" style="border: solid;border-radius: 3%;height: fit-content;">
+                <div class="col-md-3">
+                    <img src="assets/images/img.jpg" alt="" style="margin-bottom: 8px;" >
+                </div>
+                <div class="col-md-9 mt-3">
+                    <div  style="margin-top: 8pt; "> <strong>Solution Title : </strong><span> {{info1.solution}}</span></div>
+
+            <!-- <div style="margin-top: 8pt"><strong>Solution Description : </strong><span>{{info1.description}}</span></div>     -->
+            <div style="margin-top: 8pt"><strong>Solved By : </strong><span>{{info1.solvedBy}}</span></div>
+            <div style="margin-top: 8pt"><strong>Solution is: </strong><span>{{info1.solStatus}}</span></div>
+            </div>
+    
+            </div>
+            <div style="margin-top: 8pt;margin-bottom: 8pt"><strong>Solution Description : </strong><div style="line-height: 25pt;"> {{info1.description}}</div></div>
+            <!-- <div style="margin-top: 8pt"><strong>Challenge Rules : </strong><div>{{challenge?.rules}}</div></div> -->   
+            <!-- <div style="margin-top: 8pt"><strong>Challenge RewardPrize : </strong><span>{{challenge?.rewardPrize|currency:'INR'}}</span></div> -->
+            <!-- <div *ngIf="fileName" style="margin-top: 8pt">
+                <strong>Uploaded file: {{fileName}}</strong>
+                <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="openFile()">open</button></span>
+              </div> -->
+              <div *ngIf="fileName">
+                <strong>Uploaded file</strong>: {{fileName}}
+                <span style="margin-left: 1%;"><button (click)="openFile()" class="btn btn-dark" >open</button></span>
+                <span ><button (click)="downloadDocument()" [disabled]="downloadDisabled" class="btn btn-dark" style=" margin-left: 1%;">Download</button></span>
+            </div>
+            <div>
+                <strong>Git URL</strong>:<div style="margin-top: 5pt;">{{info1?.gitUrl}} <i matTooltip="open link in new window" (click)="openGit(info1?.gitUrl)" class="fas fa-external-link-alt"></i></div>
+            </div>
+            <div>
+                <span ><button *ngIf="showUpdate" class="btn btn-dark" (click)="updateSolution()" style="margin-top: 8pt">Update Solution</button></span>
+                <div *ngIf="hired.hired>=3&&!showUpdate&&info1.solStatus=='Accepted'" style="color: rgb(119, 25, 25);">You have Hired maximum number of Innovators</div>
+                <span ><button  *ngIf="!showUpdate" [disabled]="hired.hired>=3 || info1.solStatus=='Hired'" class="btn btn-dark" (click)="hireInnovator()" style=" margin-top: 2%;">Hire</button></span>
+                <!-- <span><button (click)="goBack()" class="btn btn-secondary" style="margin-top: 2%; margin-left: 1%;">Back</button></span> -->
+            </div>
+            
+              <!-- <div style="margin-top: 10pt;text-align: center;"><button class="btn btn-secondary mb-3" (click)="solution()">Attempt</button></div> -->
+        </div>
+    </div>
+    <div class="container2">
+        <div class="wrapper1">
+            <div class="title">
+                <h1>FeedBack</h1>   
+            </div>
+            <div class="row" >
+                <div class="card-body">
+                    <div *ngFor="let feedBack of feedBackList">
+                        <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                            <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">               
+                                <div class="mt-2">
+                                    <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
+                                    "></textarea>
+                                <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> Please Enter Details
+                                </div>
+                                </div>   
+                                <div class="mt-2">
+                                    <button class="btn btn-success">Post Comment </button>
+                                    <p class="valid">{{isEdit}}</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function setbg(color)
+    {
+        document.getElementById("styled").style.background=color
+    }
+</script> 

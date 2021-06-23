@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+  integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+  crossorigin="anonymous" />
+<app-header [isLoggedIn]="false"></app-header>
+ <div class="main-container d-flex flex-wrap p-5">
+   <div class="main">
+     <div class="side">
+       <h1 class="sign-in-heading">Welcome Back</h1>
+       <!-- <h3 class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+         Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
+         reiciendis, voluptatem quos voluptatibus sunt dolores.</h3> -->
+         <!-- <div class="content">
+          <h3>Sign in to get the following features</h3>
+          <h3>See customized challenges according to your domains</h3>
+          <h3>See the solutions for the challenge posted</h3>
+          <h3>Accept / Reject the solution</h3>
+          <h3>And many more......</h3>
+         </div> -->
+         <ul style="list-style-type:circle;">
+           <li><h3 class="font">Sign in to get the following features</h3></li>
+           <li><h3 class="font">See customized challenges according to your domains</h3></li>
+           <li><h3 class="font">See the solutions for the challenge posted</h3></li>
+           <li><h3 class="font">Accept / Reject the solution</h3></li>
+           <li><h3 class="font">And many more......</h3></li>
+         </ul>
+     </div>
+     <div class="sign-in">
+       <div class="alert alert-danger animate__animated animate__slideInDown" *ngIf="showAlert" role="alert">
+         Not Authorized!
+       </div>
+       <img src="assets/images/login.svg" width="40%" alt="">
+       <form class="sign-in-form" #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
+         <div class="form-group">
+           <i class="fas fa-envelope fa-lg" style="color: black;"></i>
+            <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email"
+             placeholder="Enter your mail id">
+           <div class="text-danger" *ngIf="email.dirty && email.invalid">
+             Mail id is required
+           </div>
+         </div>
+         <div class="form-group">
+           <i class="fas fa-lock fa-lg" style="color: black;"></i>
+           <input name="password" [type]="showPass?'text':'password'" #password="ngModel" class="form-control"
+             [(ngModel)]="login.password" placeholder="Enter your password">
+             <i class="fa" style="color: black;"
+                  [ngClass]="{
+                    'fa-eye-slash fa-lg': !showPass,
+                    'fa-eye fa-lg': showPass
+                  }"
+                  (click)="togglePassword()"></i>
+           <div class="text-danger" *ngIf="password.dirty && password.invalid">
+             Password is required
+           </div>
+         </div>
+         <button class="btnLogin">Login</button>
+       </form>
+       <!-- <div class="forgot-link">
+         <div>Don't have an account? Don't worry
+           <a routerLink="/registration">Register here</a>
+         </div>
+         <div>Have you visited your landing page
+           <a routerLink="/">Click here</a>
+         </div>
+       </div> -->
+     </div>
+   </div>
+   <mat-progress-bar  mode="indeterminate" *ngIf="showbar"></mat-progress-bar>        
+ </div>
+

@@ -1,0 +1,21 @@
+version: "2"
+services:
+  authentication-service:
+    build: authentication-service/
+    container_name: authentication-service
+    depends_on:
+      - mysql
+    restart: always
+#    network_mode: host
+    hostname: localhost
+    ports:
+      - 8090:8090
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    hostname: localhost
+    ports:
+      - "3307:3306"
+    volumes:
+      - /db/mysql:/data/db
+

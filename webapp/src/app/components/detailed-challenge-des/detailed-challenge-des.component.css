@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Judson&display=swap');
+.container1{
+    /* background: url("/assets/images/challengebackground.jpg") no-repeat top center; */
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  /* .wrapper{
+    color: antiquewhite;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  } */
+  
+  .wrapper .title h1{
+    
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20pt;
+    font-family:Lora ;
+    font-weight: bold;
+  }
+  strong{
+    font-size: 18pt;
+    font-family:Lora ;
+    font-weight: bold;
+  }
+  span{
+    font-size: 18pt;
+    font-family: 'Judson', serif;
+  }
+  div{
+    font-family:Lora ;
+    /* font-weight: bold; */
+    font-size: 18pt;
+    margin-top: 1%;
+  }
+  h2{
+    font-family:Lora ;
+  }

@@ -1,0 +1,186 @@
+<app-header [isLoggedIn]="true"></app-header>
+<div *ngIf="challengeIsNull" style="text-align: center;font-size: 20pt; margin-top: 50pt;">!! <i class="far fa-tired"></i> There are no Challenges in the platform</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="notSearched">Search Result</h1>
+    <div class="col-md-3" *ngFor="let c of searchedChallenge">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark ">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i class="fas fa-eye fa-lg"></i><span style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="searchIsNull"> <i class="fas fa-times-circle"></i>No Search result Found <img src="assets/images/gif1.gif" alt=""></div> -->
+    <div *ngIf="searchIsNull" style="text-align: center;"><img src="assets/images/gif1.gif" alt=""></div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="recomIsNull"> <strong> Recommended Challenges</strong></h1>
+    <div class="col-md-3 " *ngFor="let c of recommended">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg  "></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="healthIsNull"> Health</h1>
+    <div class="col-md-3 " *ngFor="let c of health">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg  "></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="engineeringIsNull">Engineering</h1>
+    <div class="col-md-3" *ngFor="let c of engineering">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="electricityIsNull">Electricity</h1>
+    <div class="col-md-3" *ngFor="let c of electricity">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="scienceIsNull">Science</h1>
+    <div class="col-md-3" *ngFor="let c of science">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="aerospaceIsNull">Aerospace</h1>
+    <div class="col-md-3" *ngFor="let c of aerospace">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="habitatIsNull">Habitat</h1>
+    <div class="col-md-3" *ngFor="let c of habitat">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <h1 class="text-center" *ngIf="environmentIsNull">Environment</h1>
+    <div class="col-md-3" *ngFor="let c of environment">
+        <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
+            <img src="{{c.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body bg-dark">
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>

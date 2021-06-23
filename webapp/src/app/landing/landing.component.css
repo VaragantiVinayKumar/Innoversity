@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.text2{
+    margin-left: 20px;
+    font-family:"Lora";
+    text-align: justify;
+}
+.float-style{
+    float: left;
+    background-color: blanchedalmond;
+    border-radius: 15%;
+    margin-right: 30pt;
+}
+.heading{
+    text-align: center;
+    padding-top: 5pt;
+    font-family:Lora ;
+}
+.Info{
+    font-family:Lora ;
+    font-weight: bold;
+}
+#contact img{
+    height: 100pt;
+    margin-right: 5pt;
+}
+.container1{
+    height: 21rem;
+    background-color:black;
+    color:white;
+    font-family:Lora ;
+}
+.footer{
+    height: 40pt;
+    margin-top: 10pt;
+    background-color: rgb(127, 175, 207);
+    text-align: center;
+    color: white;
+    padding-top: 7pt;
+    font-family:Lora ;
+}
+h3{
+    font-family:Lora ;
+}
+h2{
+    font-family:Lora ;
+}

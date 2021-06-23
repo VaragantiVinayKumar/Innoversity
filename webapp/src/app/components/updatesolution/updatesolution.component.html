@@ -1,0 +1,128 @@
+<!-- <div class="container1">
+ 
+ 
+    <h1 class="card-text" style="padding-top: 5px;padding-left: 20px; font-family:Lora;"><strong>CHALLENGE NAME : </strong>{{info.challengeTitle}}</h1>
+    <h1 class="card-text" style="padding-top: 5px;padding-left: 20px;font-family:Lora;"><strong>SOLUTION NAME : </strong>{{info.solution}}</h1>
+  
+
+  <div *ngIf="fileName">
+    <h1 class="card-text" style="padding-top: 5px; padding-left: 20px; font-family:Lora;"><strong>Previously Uploaded File : </strong>{{fileName}}</h1>
+      <button (click)="openFile()" class="btn btn-secondary" style="margin-left: 10px; font-family:Lora;">open</button>
+    </div>
+
+<div class="img1">
+  <img src="/assets/images/updatesolution1.jpg" alt="updatesolution1">
+</div>
+
+<div class="img">
+    
+  <img src="/assets/images/updatesolution.jpg" alt="updatesolution">
+</div> -
+
+    
+
+<form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)"> 
+
+  <div class="desc">
+    <h1  style="padding-top: 5px;font-family:Lora;"><strong>Solution Description:</strong></h1>
+    <textarea style="margin-left: 4px;" rows="20"  id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  formControlName="description" class="form-control"></textarea>
+  </div>
+
+  
+
+  
+<div style="margin-left: 20px;">
+
+  <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px ; width: auto;" accept=".pdf"
+    (change)="onFileChanged($event)" />
+  <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+    <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
+  </mat-error>
+</div>
+  <div class="col-sm py-3 offset-sm-5">
+    <button mat-raised-button class="btn btn-secondary" (click)="checkUpdate()">
+      Update
+    </button>
+  </div>
+</form>
+</div> -->
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+
+
+
+<app-header [isLoggedIn]="true"></app-header>
+<header class="masthead">
+  <button (click)="feedback()" class="btn mt-1"
+    style="margin-left: 7px;background-color: rgb(34, 24, 28); color: white;font-family: Lora;">Back</button>
+  <h1 class="content text-center mt-1" style="background-image: url('assets/images/solution1.gif'); font-family:Lora;">
+    Update Your Solution Here !</h1>
+</header>
+<section class="features-icons bg-light text-center">
+  <div class="container-fluid" style="background-color: beige; color:black;">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto  mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+          <h1 style="font-family: Lora;"><strong>CHALLENGE NAME</strong></h1>
+          <h2 class="lead mb-0" style="font-family: Lora;">{{info.challengeTitle}}</h2>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto  mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
+          <h1 style="font-family: Lora;"><strong>SOLUTION NAME</strong></h1>
+          <h2 class="lead mb-0" style="font-family: Lora;">{{info.solution}}</h2>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto  mb-lg-3" *ngIf="fileName">
+          <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+          <h1 style="font-family: Lora;"><strong>Previously Uploaded File</strong></h1>
+          <h2 class="lead mb-0" style="font-family: Lora;">{{fileName}}<button (click)="openFile()"
+              class="btn"
+              style="margin-left: 7px;background-color: rgb(34, 24, 28); color: white;">Open</button></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="showcase mt-1">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-lg-6 order-lg-2 showcase-img mt-4"><img src="/assets/images/dashimage.jpg" alt="" width="85%"
+          height="75%" style="border-radius: 20px; margin-left: 3%;"></div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)">
+
+          <div class="desc">
+            <h1 style="padding-top: 1px;font-family:Lora;"><strong>Solution Description:</strong></h1>
+            <textarea style="margin-left: 4px; font-family: Lora;font-size: large;" rows="20" id="comment_text"
+              cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"
+              aria-haspopup="true" formControlName="description" class="form-control"></textarea>
+          </div>
+          <div style="margin-left: 20px; font-family: Lora;">
+            <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px ; width: auto;"
+              accept=".pdf" (change)="onFileChanged($event)" />
+            <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+              <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
+            </mat-error>
+          </div>
+          <div class="col-sm py-3 offset-sm-5">
+            <button mat-raised-button class="btn"
+              style="background-color: rgb(34, 24, 28); color: white; font-family: Lora;" (click)="checkUpdate()">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

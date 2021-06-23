@@ -1,0 +1,104 @@
+<!-- <app-header [isLoggedIn]="true"></app-header>
+<div class="main-container d-flex flex-wrap p-5">
+    <div class="main">
+        <div class="side">
+            <h1 class="sign-in-heading">Challenge details</h1>
+         <h3 class="content"><strong>Challenge Abstract: </strong>{{info.challengeAbstract}}</h3>
+         <h3 class="content"><strong>Challenge Description: </strong>{{info.description}}</h3>
+         <h3 class="content"><strong>Expiration Date: </strong>{{info.expiryDate | date}}</h3>
+         <h3 class="content"><strong>Uploaded On: </strong>{{info.uploadedOn | date}}</h3>
+         <h3 class="content"><strong>Rules: </strong>{{info.rules}}</h3>
+         <h3 class="content"><strong>Prize Amount: </strong>{{info.rewardPrize}}</h3>
+        </div>
+    <div class="row">       
+        <img src="/assets/images/idea.svg" width="50%"  alt="">        
+        <div class="frm">
+            <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
+                <div class="mt-2" >
+                   <p style="font-size: 20px;"><strong>Challenge Name: </strong>{{info.challengeTitle}}</p>
+                </div>
+                <div  class="edit">
+                    <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
+                    <div class="text-danger" *ngIf="solution.dirty && solution.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class ="edit">
+                   
+                    <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Write brief Description for solution" spellcheck="false"></textarea>
+                    <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
+                        Please enter the details
+                    </div>
+                </div>
+                <div  class="edit">
+                    <input type="text" #gitUrl="ngModel" name="gitUrl"  class="form-control" required  [(ngModel)]="innovator.gitUrl" placeholder="Enter github Url">
+                    <div class="text-danger" *ngIf="gitUrl.dirty && gitUrl.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>  
+                <div class="edit1">
+                    <p style="color: black; margin-top: 35px;">Upload Files</p>
+                    <input type="file" class="form-control" [(ngModel)]="innovator.uploadFile" id="file" style="padding: 4px" accept=".pdf"
+                        (change)="onFileChanged($event)" />
+                </div> 
+                     
+                <div class="mt-2">
+                    <button class="btnLogin" >Submit</button>
+                    <p class="valid">{{isEdit}}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div> -->
+<app-header [isLoggedIn]="true"></app-header>
+ <div class="main-container d-flex flex-wrap p-5">
+   <div class="main">
+     <div class="side">
+       <h1 class="sign-in-heading">Challenge details</h1>
+         <h3 class="content"><strong style="font-size: 22px;">Challenged By : </strong>{{info.challengerName}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Expiration Date : </strong>{{info.expiryDate | date}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Uploaded On : </strong>{{info.uploadedOn | date}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Prize Amount : </strong>{{info.rewardPrize |currency : 'USD'}}</h3>
+         <button class="btn btn-secondary" (click)="next()">More Details...</button>
+        </div>
+     
+     <div class="sign-in">
+        <img src="/assets/images/idea.svg" width="50%"  alt="">
+        <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
+            <p style="font-size: 20px;font-family: Lora;"><strong>Challenge Name: </strong>{{info.challengeTitle}}</p>
+         <div class="edit">
+           
+            <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
+                    <div class="text-danger" *ngIf="solution.dirty && solution.errors?.required"> 
+                        Please enter the details
+                    </div>
+         </div>
+         <div class="edit">
+            <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Description for solution" spellcheck="false"></textarea>
+                    <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
+                        Please enter the details
+                    </div>
+         </div>
+         <div  class="edit">
+            <input type="text" #gitUrl="ngModel" name="gitUrl"  class="form-control" required  [(ngModel)]="innovator.gitUrl" placeholder="Enter github Url">
+            <div class="text-danger" *ngIf="gitUrl.dirty && gitUrl.errors?.required"> 
+                Please enter the details
+            </div>
+        </div>  
+        <div class="edit">
+            <p style="color: black; margin-top: 35px;">Upload Files</p>
+            <input type="file" class="form-control" [(ngModel)]="innovator.uploadFile" id="file" style="padding: 4px" accept=".pdf"
+                (change)="onFileChanged($event)" />
+        </div> 
+             
+        <div class="mt-2">
+            <button class="btnLogin" >Submit</button>
+            <p class="valid">{{isEdit}}</p>
+        </div>
+       </form>
+     </div>
+   </div>
+   <mat-progress-bar  mode="indeterminate" *ngIf="showbar"></mat-progress-bar>        
+ </div>
+

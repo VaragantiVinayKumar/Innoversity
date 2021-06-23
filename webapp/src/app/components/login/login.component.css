@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Lora;
+    box-sizing: border-box;
+}
+
+.main-container {
+    background: url("/assets/images/logo3.jpg") top/cover;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-size: auto;
+}
+
+.main {
+    width: 80%;
+    height: 80vh;
+    box-shadow: 0px 10px 20px 1px rgb(136, 135, 135);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 10%;
+    background-color: beige;
+}
+
+.side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #202020;
+    padding: 20px;
+    color: white;
+}
+
+.sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.sign-in-heading{
+    font-family: Lora;
+}
+
+.sign-in-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    margin-bottom: 15px;
+    height: 42px;
+    border-radius: 10px;
+    text-align: center;
+    width: 75%;
+}
+
+.form-group i {
+    line-height: 45px;
+    color: rgb(146, 146, 146);
+}
+
+
+.form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgb(34, 24, 28);
+    outline: none;
+}
+
+.btnLogin {
+    width: 120px;
+    height: 40px;
+    background-color: rgb(34, 24, 28);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btnLogin:hover {
+    width: 180px;
+}
+
+.forgot-link{
+    margin-top: 20px;
+    align-items: center;
+}
+
+.para{
+    font-family: Lora;
+}
+
+.sign-in-heading ul li{
+    text-align: left;
+}
+
+.font{
+    font-family: Lora;
+}

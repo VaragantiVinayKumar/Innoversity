@@ -1,0 +1,10 @@
+version: '2'
+services:
+  challenge:
+    build: challenge/
+    container_name: challenge
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8095:8095

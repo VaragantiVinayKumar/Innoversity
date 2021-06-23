@@ -1,0 +1,54 @@
+server:
+  port: 8090
+
+eureka:
+  client.service-url:
+    defaultZone: http://localhost:8761/eureka
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/authenticationdb
+#    username: root
+#    password: 123456789
+#  jpa:
+#    hibernate.ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/authenticationdb?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: root
+  application:
+    name: authentication-service
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+  rabbitmq:
+    queue: user.queue
+    exchange: user.exchange
+    routingkey: user.routingkey
+    host: localhost
+    username: guest
+    password: guest
+    port: 15672
+
+jwt:
+  secret: secret
+app:
+  jwttoken:
+    message: Login Successful
+  controller:
+    exception:
+      message1: Email and Password Empty
+      message2: Email and Password not found
+      message3: Email and Password invalid

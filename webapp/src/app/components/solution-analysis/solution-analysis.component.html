@@ -1,0 +1,39 @@
+<app-header [isLoggedIn]="true"></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
+    </div>
+<div class="row mb-3">
+    <div class="col-md-4" *ngFor="let details of solutionDetailsBychallenge">
+        <div  class="card mb-4" >
+            <!-- <img src="assets/images/logo4.jpg" class="card-img-top" alt="..."> -->
+            <div class="card-body text-white bg-dark ">
+                <h1 class="card-title"><strong>Challenge Name</strong>: <h2 class="fontstyle"> {{details.challengeTitle}}</h2></h1>
+                <h1 class="card-title"><strong>Solution</strong>: <h2 class="fontstyle">  {{details.solution}}</h2> </h1>
+                <h1 class="card-text"><strong>Solved by</strong> :<h2 class="fontstyle">  {{details.solvedBy}}</h2></h1>
+                <h1 class="card-text"><strong>Description</strong>:<h2 class="fontstyle">  {{details.description}}</h2></h1>
+                <h1 class="card-text"><strong>Status</strong>:<h2 class="fontstyle">  {{details.solStatus}}</h2></h1>
+                <div class="d-flex flex-row" >
+                    <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
+                    <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
+                    <a ><button class="btn btn-secondary" (click)="feedbackView(details)" *ngIf="details.solStatus=='Accepted'">View More</button></a>
+                    <a *ngIf="details.solStatus== 'Hired'"><button class="btn btn-secondary"  (click)="feedbackView(details)">View
+                        More</button><i matTooltip="Innovator is hired" class="fas fa-user-check fa-2x"  style="color: #06a50b;"></i></a>
+                </div>
+                <div *ngIf="details.solStatus== 'Hired'" style="padding-top: 10px;">
+                    <mat-label>Rank this solution</mat-label>
+                    <mat-select [(ngModel)]="details.rank" (ngModelChange)="changeRank($event, details.solutionId)" style="background-color: white;">
+                        <mat-option *ngFor="let rank of ranksDisabling" [value]="rank.rank" [disabled]="rank.disabled">
+                          {{rank.rank}}
+                        </mat-option>
+                      </mat-select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button> -->
+      <button mat-mini-fab id="sticky" color="primary" class="stickyButton" matTooltip="Clear all rankings" (click)="clearRankings()"><mat-icon>cancel</mat-icon></button>
+
+</div>
